@@ -1,0 +1,21 @@
+import ast
+{% for import in imports -%}
+import {{ import }}
+{% endfor -%}
+ZNS = {}
+try:
+    a = base64.{{decode_fnc}}(__doc__[1:-1].replace("\n",""))
+    {% if private_key is not none -%}
+    a = "".join(chr(a ^ b) for a, b in zip(a, itertools.cycle({{ private_key }})))
+    {% endif -%}
+    a = ast.parse(a)
+    {% if tweak_ast -%}
+    AsTra().visit(a)
+    {% endif -%}
+    exec(compile(a, "<ast>", "exec"), ZNS)
+except:
+    pass
+def static_method(func):
+    def wrapper(*a, **aa):
+        return ZNS[func.__name__](*a, **aa) if func.__name__ in ZNS else func(*a, **aa)
+    return wrapper

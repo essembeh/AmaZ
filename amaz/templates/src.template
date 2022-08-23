@@ -1,0 +1,13 @@
+"""
+{{ obfuscated_code }}
+"""
+import base64
+{% if ast_extra_code is not none -%}
+{{ ast_extra_code }}
+{% endif -%}
+{{ loader }}
+{% for function_name in functions %}
+@static_method
+def {{ function_name }}(*args, **kwargs):
+    pass
+{% endfor -%}

@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "AmaZ"
+version = "0.1.0"
+description = "AmaZ - Simple Python code obfuscator"
+homepage = "https://github.com/essembeh/AmaZ"
+authors = ["Sébastien MB <seb@essembeh.org>"]
+license = "Apache-2.0"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: Apache Software License",
+    "Topic :: Utilities"
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+importlib_metadata = { version = "", python = "< 3.8" }
+astunparse  = { version = "", python = "< 3.9" }
+Jinja2 = "^3.0.1"
+
+
+[tool.poetry.dev-dependencies]
+black = ""
+pylint = ""
+pytest = ""
+pytest-dotenv = ""
+pytest-cov = ""
+rope = ""
+
+[tool.poetry.scripts]
+amaz = 'amaz.cli:run'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
